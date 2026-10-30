@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<Workflow name="Cyble IOC" version="2.0"
-xmlns="http://qradar.ibm.com/UniversalCloudRESTAPI/Workflow/V1">
+<Workflow name="Cyble IOC" version="1.0"
+xmlns="http://qradar.ibm.com/UniversalCloudRESTAPI/Workflow/V2_1">
 
 <!--    Reading required parameters for the Workflow-->
 <Parameters>
@@ -99,7 +99,7 @@ xmlns="http://qradar.ibm.com/UniversalCloudRESTAPI/Workflow/V1">
                         high-water mark has already been ingested in a previous run.-->
             <ForEach item="/current_ioc" items="/get_iocs/body/data/iocs">
                 <If condition="${/current_ioc/last_seen} > ${/highWater_${/type}}">
-                    <PostEvent path="/current_ioc" source="${/hostname}" />
+                    <PostEvent path="/current_ioc" />
                     <Set path="/posted_count" value="${/posted_count + 1}" />
                     <If condition="${/current_ioc/last_seen} > ${/newHighWater}">
                         <Set path="/newHighWater" value="${/current_ioc/last_seen}" />

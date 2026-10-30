@@ -77,7 +77,7 @@ The steps to configure a log source on the QRadar® Console using the Workflow f
     - __Coalescing Events__: __Off__
     - Keep rest of the settings as default, and proceed to next step.
 7. On the Configure the Protocol Parameters page:
-    - __Log source identifier__: < same as __hostname__ above >
+    - __Log source identifier__: a **unique** value for this log source, e.g. `cyble-ioc` or `api.cyble.ai-ioc`. This workflow uses the `V2_1` namespace and does **not** set a `source` on `PostEvent`, so events are attributed to this log source by its identifier. Use a value **different** from any other Cyble log source (such as the Cyble Threat Intel alerts log source) that points at the same host, to avoid a log source identifier conflict.
     - Copy the workflow code from __Cyble-IOC-Workflow.xml__ and paste it into the 'Workflow' field
     - Copy the workflow params from __Cyble-IOC-Workflow-Parameter-Values.xml__, populate the fields and paste into the 'Workflow Parameters Values' field
     - __Untrusted Certificates__: __Allow__
